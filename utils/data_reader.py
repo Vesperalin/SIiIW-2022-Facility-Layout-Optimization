@@ -2,7 +2,7 @@ import json
 
 from models.cost_of_flow import CostOfFlow
 from models.amount_of_flow import AmountOfFlow
-from models.machine import Machine
+from models.entity import Entity
 
 
 """
@@ -11,7 +11,7 @@ from models.machine import Machine
         returns
             - cost_of_flow_results - list of CostOfFlow objects - read from file
             - amount_of_flow - list of AmountOfFlow objects - read from file
-            - machines - list of Machine objects - based on all machine indexes from <problem instance name>_flow.json
+            - entities - list of Entity objects - based on all entity indexes from <problem instance name>_flow.json
 """
 
 
@@ -24,8 +24,8 @@ def read_data(problem_instance):
 
     cost_of_flows_results = []
     amount_of_flows_results = []
-    machines = []
-    machines_indexes = set()  # to collect all machines id without repetitions
+    entities = []
+    entities_indexes = set()  # to collect all entities id without repetitions
 
     for record in cost_of_flows_data:
         result = CostOfFlow(record['source'], record['dest'], record['cost'])
@@ -36,10 +36,10 @@ def read_data(problem_instance):
         amount_of_flows_results.append(result)
 
     for record in amount_of_flows_data:
-        machines_indexes.add(record['source'])
-        machines_indexes.add(record['dest'])
+        entities_indexes.add(record['source'])
+        entities_indexes.add(record['dest'])
 
-    for machine_index in machines_indexes:
-        machines.append(Machine(machine_index))
+    for entity_index in entities_indexes:
+        entities.append(Entity(entity_index))
 
-    return cost_of_flows_results, amount_of_flows_results, machines
+    return cost_of_flows_results, amount_of_flows_results, entities
