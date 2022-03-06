@@ -44,14 +44,6 @@ if __name__ == '__main__':
 
     show_statistics(easy_starting_population, flat_starting_population, hard_starting_population)
 
+# TODO - dopracować komentarze
 
-
-
-# TODO: funkcja przystosowania
-
-# Plan implementacji:
-#   - potem funkcja przystosowania
-
-# Pomysły
-#   - może po utworzeniu populacji należałoby zrobić słownik: id - ustawienie w Individuals
 

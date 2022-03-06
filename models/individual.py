@@ -8,6 +8,7 @@ class Individual:
         self.costs_of_flow = costs_of_flow
         self.amounts_of_flow = amounts_of_flow
         self.amount_of_machines = amount_of_machines
+        self.coordinates = self.__generate_id_to_coordinates_collection(matrix)
 
     def __str__(self):
         result = ""
@@ -18,13 +19,20 @@ class Individual:
             result += "]"
         return result
 
-    def get_machine_coordinates_by_id(self, machine_id):
+    def __generate_id_to_coordinates_collection(self, matrix):
+        coordinates = {}
         for i in range(len(self.matrix[0])):
             for j in range(len(self.matrix)):
                 if self.matrix[j][i] is not None:
-                    if machine_id == self.matrix[j][i].machine_id:
-                        return i, j
-        return -1
+                    coordinates.update({self.matrix[j][i].machine_id: (i, j)})
+        return coordinates
+
+    def get_machine_coordinates_by_id(self, machine_id):
+        coordinates = self.coordinates.get(machine_id)
+        if coordinates is None:
+            return -1
+        else:
+            return coordinates
 
     def __get_cost(self, source_machine_id, destination_machine_id):
         result = list(filter(lambda c: c.source == source_machine_id and c.destination == destination_machine_id,
