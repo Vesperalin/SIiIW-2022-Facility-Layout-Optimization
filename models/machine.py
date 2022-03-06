@@ -1,6 +1,6 @@
 class Machine:
     """
-        id - identifier of machine (integer value)
+        machine_id - identifier of machine (integer value)
     """
     def __init__(self, machine_id):
         self.machine_id = machine_id

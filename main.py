@@ -6,14 +6,13 @@ from utils.data_reader import read_data
 
 
 def print_hi(name):
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    print(f'Hi, {name}')
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     easy_problem_instance = ProblemInstance("easy", 3, 3, 9)
-    flat_problem_instance = ProblemInstance("flat", 1, 12, 12)
-    hard_problem_instance = ProblemInstance("hard", 5, 6, 24)
+    # flat_problem_instance = ProblemInstance("flat", 1, 12, 12)
+    # hard_problem_instance = ProblemInstance("hard", 5, 6, 24)
 
     costs_of_flow = []
     amounts_of_flow = []
@@ -23,9 +22,9 @@ if __name__ == '__main__':
         costs_of_flow, amounts_of_flow, machines = read_data(easy_problem_instance)
 
     except FileNotFoundError:
-        print("Couldn't find the file")
+        print("Couldn't find the files")
     except json.decoder.JSONDecodeError:
-        print("Error while reading a file")
+        print("Error while reading a files")
 
 
 # TODO: metoda losowa
@@ -41,7 +40,7 @@ if __name__ == '__main__':
 # Pomysły
 #   - getCost, getFlow, getDistance, f. przystosowania wydzieliś do osobnego pliku
 #   - w pliku głównym porogramu mam listy: kosztów, przepływów oraz maszyn - one nigdy się nie zmieniają, żadne ich pole
-#   - siatka / matrix, ma w sobie tylko id maszyn, nie referencje do maszyn
+#   - siatka / matrix, ma w sobie referencje do maszyn
 #   - przyda się gdzieś metoda w stylu: getMachineById(id)
 
 # wygląd macierzy

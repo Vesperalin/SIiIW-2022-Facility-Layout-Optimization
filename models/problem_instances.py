@@ -1,5 +1,6 @@
 class ProblemInstance:
     """
+        name - name of the problem (easy, flat, hard)
         width - width of matrix
         height - height of matrix
         machines_amount - amount of machines on matrix
