@@ -1,6 +1,5 @@
 import json
 
-
 from models.cost_of_flow import CostOfFlow
 from models.amount_of_flow import AmountOfFlow
 from models.machine import Machine
@@ -26,7 +25,7 @@ def read_data(problem_instance):
     cost_of_flows_results = []
     amount_of_flows_results = []
     machines = []
-    machines_indexes = set()
+    machines_indexes = set()  # to collect all machines id without repetitions
 
     for record in cost_of_flows_data:
         result = CostOfFlow(record['source'], record['dest'], record['cost'])

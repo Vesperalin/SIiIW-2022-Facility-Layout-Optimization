@@ -15,22 +15,21 @@ if __name__ == '__main__':
     machines = []
 
     try:
-        costs_of_flow, amounts_of_flow, machines = read_data(hard_problem_instance)
+        costs_of_flow, amounts_of_flow, machines = read_data(easy_problem_instance)
 
     except FileNotFoundError:
         print("Couldn't find the files")
     except json.decoder.JSONDecodeError:
         print("Error while reading a files")
 
-    starting_population = random_method(3, hard_problem_instance, machines)
+    starting_population = random_method(3, easy_problem_instance, machines)
+
+    print(starting_population.__str__())
 
 
-
-# TODO: metoda losowa
 # TODO: funkcja przystosowania
 
 # Plan implementacji:
-#   - najpierw implementuje metode losowa
 #   - potem funkcja przystosowania
 
 # Pamiętać
@@ -39,16 +38,7 @@ if __name__ == '__main__':
 # Pomysły
 #   - getCost, getFlow, getDistance, f. przystosowania wydzieliś do osobnego pliku
 #   - w pliku głównym porogramu mam listy: kosztów, przepływów oraz maszyn - one nigdy się nie zmieniają, żadne ich pole
-#   - siatka / matrix, ma w sobie referencje do maszyn
-#   - przyda się gdzieś metoda w stylu: getMachineById(id)
+#   - przyda się gdzieś metoda w stylu: getMachineCoordinatesById(id)
 #   - co jak 2 macierze mają to samo ułożenie? - metoda losowa
 #   - zmina z listy na array lub definiowanie wymiarów
 
-
-
-#getXAndY(id)
-
-# wygląd macierzy
-# 0   |   1  | 4
-# 6   | none | 2
-# 3   |   5  | none       - tak ma wygladac macierz - to sa id maszyn
