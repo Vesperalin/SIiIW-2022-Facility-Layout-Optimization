@@ -8,5 +8,5 @@ class Population:
     def __str__(self):
         result = ""
         for individual in self.individuals:
-            result += individual.__str__() + "\n"
+            result += individual.__str__() + '\n'
         return result

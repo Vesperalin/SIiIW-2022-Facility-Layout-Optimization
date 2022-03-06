@@ -3,6 +3,7 @@ import json.decoder
 from models.problem_instances import ProblemInstance
 from utils.data_reader import read_data
 from utils.random_method import random_method
+from utils.statistics import show_statistics
 
 
 if __name__ == '__main__':
@@ -10,21 +11,40 @@ if __name__ == '__main__':
     flat_problem_instance = ProblemInstance("flat", 1, 12, 12)
     hard_problem_instance = ProblemInstance("hard", 5, 6, 24)
 
-    costs_of_flow = []
-    amounts_of_flow = []
-    machines = []
+    easy_costs_of_flow = []
+    flat_costs_of_flow = []
+    hard_costs_of_flow = []
+
+    easy_amounts_of_flow = []
+    flat_amounts_of_flow = []
+    hard_amounts_of_flow = []
+
+    easy_machines = []
+    flat_machines = []
+    hard_machines = []
 
     try:
-        costs_of_flow, amounts_of_flow, machines = read_data(easy_problem_instance)
+        easy_costs_of_flow, easy_amounts_of_flow, easy_machines = read_data(easy_problem_instance)
+        flat_costs_of_flow, flat_amounts_of_flow, flat_machines = read_data(flat_problem_instance)
+        hard_costs_of_flow, hard_amounts_of_flow, hard_machines = read_data(hard_problem_instance)
 
     except FileNotFoundError:
         print("Couldn't find the files")
     except json.decoder.JSONDecodeError:
         print("Error while reading a files")
 
-    starting_population = random_method(3, easy_problem_instance, machines)
+    easy_starting_population = \
+        random_method(1000, easy_problem_instance, easy_machines, easy_costs_of_flow, easy_amounts_of_flow)
 
-    print(starting_population.__str__())
+    flat_starting_population = \
+        random_method(1000, flat_problem_instance, flat_machines, flat_costs_of_flow, flat_amounts_of_flow)
+
+    hard_starting_population = \
+        random_method(1000, hard_problem_instance, hard_machines, hard_costs_of_flow, hard_amounts_of_flow)
+
+    show_statistics(easy_starting_population, flat_starting_population, hard_starting_population)
+
+
 
 
 # TODO: funkcja przystosowania
@@ -32,13 +52,6 @@ if __name__ == '__main__':
 # Plan implementacji:
 #   - potem funkcja przystosowania
 
-# Pamiętać
-#   - w funkcji przystosowania uwzględnić to, że nie ma połączenia każdy z każdym
-
 # Pomysły
-#   - getCost, getFlow, getDistance, f. przystosowania wydzieliś do osobnego pliku
-#   - w pliku głównym porogramu mam listy: kosztów, przepływów oraz maszyn - one nigdy się nie zmieniają, żadne ich pole
-#   - przyda się gdzieś metoda w stylu: getMachineCoordinatesById(id)
-#   - co jak 2 macierze mają to samo ułożenie? - metoda losowa
-#   - zmina z listy na array lub definiowanie wymiarów
+#   - może po utworzeniu populacji należałoby zrobić słownik: id - ustawienie w Individuals
 
