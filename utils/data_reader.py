@@ -9,9 +9,9 @@ from models.machine import Machine
     read_data(problem_instance): 
         parameter - ProblemInstance object
         returns
-            - cost_of_flow_results - array of CostOfFlow objects - read from file
-            - amount_of_flow - array of AmountOfFlow objects - read from file
-            - machines - array of Machine objects - based on all machine indexes from <problem instance name>_flow.json
+            - cost_of_flow_results - list of CostOfFlow objects - read from file
+            - amount_of_flow - list of AmountOfFlow objects - read from file
+            - machines - list of Machine objects - based on all machine indexes from <problem instance name>_flow.json
 """
 
 

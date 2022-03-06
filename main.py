@@ -43,7 +43,3 @@ if __name__ == '__main__':
         random_method(1000, hard_problem_instance, hard_machines, hard_costs_of_flow, hard_amounts_of_flow)
 
     show_statistics(easy_starting_population, flat_starting_population, hard_starting_population)
-
-# TODO - dopracować komentarze
-
-

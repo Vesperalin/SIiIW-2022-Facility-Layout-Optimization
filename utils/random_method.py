@@ -6,21 +6,18 @@ from models.population import Population
 
 """
     random_method(population_size, problem_instance, machines, costs_of_flow, amounts_of_flow)
-        parameters - population size, problem instance, list of machines, 
-                     cost of flow between machines list and amount of flow between machines list
-        returns
-            - population - returns Population instance, which contains collection of population individuals
+        generates and returns Population instance, which contains collection of population individuals
             
     assign_positions_to_machines_in_matrix(problem_instance, machines)
-        parameters - problem instance and list of machines
-        returns - matrix of randomly placed machines - for individual
+        returns matrix of randomly placed machines (2D list od Machine objects)
 """
 
 
 def random_method(population_size, problem_instance, machines, costs_of_flow, amounts_of_flow):
     population = []
     for i in range(population_size):
-        individual = Individual(assign_positions_to_machines_in_matrix(problem_instance, machines), costs_of_flow, amounts_of_flow, len(machines))
+        individual = Individual(assign_positions_to_machines_in_matrix(problem_instance, machines),
+                                costs_of_flow, amounts_of_flow)
         population.append(individual)
 
     return Population(population)

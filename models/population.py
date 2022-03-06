@@ -1,6 +1,6 @@
 class Population:
     """ Represents population
-        individuals - matrix of individuals in population
+        individuals - list of individuals in population ([Individual])
     """
     def __init__(self, individuals):
         self.individuals = individuals

@@ -1,8 +1,8 @@
 class AmountOfFlow:
     """ Class represents amount of flow between two machines
-        source - source machine id
-        destination - destination machine id
-        amount - amount of flow from source machine to destination machine
+        source - source machine id (int)
+        destination - destination machine id (int)
+        amount - amount of flow from source machine to destination machine (int)
     """
     def __init__(self, source, destination, amount):
         self.source = source

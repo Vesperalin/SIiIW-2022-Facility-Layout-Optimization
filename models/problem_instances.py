@@ -1,9 +1,9 @@
 class ProblemInstance:
     """ Class represents given problem parameters: amount of machines, matrix size and name - prefix of data file
-        name - name of the problem (easy, flat, hard)
-        width - width of matrix
-        height - height of matrix
-        machines_amount - amount of machines on matrix
+        name - name of the problem (easy, flat, hard) (string)
+        width - width of matrix (int)
+        height - height of matrix (int)
+        machines_amount - amount of machines on matrix (int)
     """
 
     def __init__(self, name, width, height, machines_amount):

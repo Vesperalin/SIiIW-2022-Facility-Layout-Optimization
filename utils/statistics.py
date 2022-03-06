@@ -1,27 +1,35 @@
 from math import sqrt
 
 
+"""
+    show_statistics(easy_starting_population, flat_starting_population, hard_starting_population)
+        shows results from count_statistics(starting_population) function
+        
+    count_statistics(starting_population)
+        calculates and returns:
+            the best adaptation score, the worst adaptation score, average adaptation score and standard deviation
+        for individuals in population
+"""
+
+
 def show_statistics(easy_starting_population, flat_starting_population, hard_starting_population):
     easy_statistics = count_statistics(easy_starting_population)
-    print("Easy data for 1000 individuals")
-    print("Best score: " + str(easy_statistics[0]))
-    print("Worst score: " + str(easy_statistics[1]))
-    print("Average score: " + str(easy_statistics[2]))
-    print("Standard deviation: " + str(easy_statistics[3]))
-    print("*****************************************************************************************")
     flat_statistics = count_statistics(flat_starting_population)
-    print("Flat data for 1000 individuals")
-    print("Best score: " + str(flat_statistics[0]))
-    print("Worst score: " + str(flat_statistics[1]))
-    print("Average score: " + str(flat_statistics[2]))
-    print("Standard deviation: " + str(flat_statistics[3]))
-    print("*****************************************************************************************")
     hard_statistics = count_statistics(hard_starting_population)
-    print("Hard data for 1000 individuals")
-    print("Best score: " + str(hard_statistics[0]))
-    print("Worst score: " + str(hard_statistics[1]))
-    print("Average score: " + str(hard_statistics[2]))
-    print("Standard deviation: " + str(hard_statistics[3]))
+    results = [easy_statistics, flat_statistics, hard_statistics]
+
+    for i in range(len(results)):
+        if i == 0:
+            print("Easy data for 1000 individuals")
+        elif i == 1:
+            print("Flat data for 1000 individuals")
+        else:
+            print("Hard data for 1000 individuals")
+        print("Best score: " + str(results[i][0]))
+        print("Worst score: " + str(results[i][1]))
+        print("Average score: " + str(results[i][2]))
+        print("Standard deviation: " + str(results[i][3]))
+        print("*****************************************************************************************")
 
 
 def count_statistics(starting_population):
