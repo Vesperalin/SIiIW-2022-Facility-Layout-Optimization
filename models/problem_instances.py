@@ -1,5 +1,5 @@
 class ProblemInstance:
-    """
+    """ Class represents given problem: amount of machines, matrix size and name - prefix of data file
         name - name of the problem (easy, flat, hard)
         width - width of matrix
         height - height of matrix

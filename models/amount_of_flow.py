@@ -1,5 +1,5 @@
 class AmountOfFlow:
-    """
+    """ Class represents amount of flow between two machines
         source - source machine id
         destination - destination machine id
         amount - amount of flow from source machine to destination machine

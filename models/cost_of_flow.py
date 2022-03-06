@@ -1,5 +1,5 @@
 class CostOfFlow:
-    """
+    """ Class represents cost of flow between two machines
         source - source machine id
         destination - destination machine id
         cost - cost of flow from source machine to destination machine

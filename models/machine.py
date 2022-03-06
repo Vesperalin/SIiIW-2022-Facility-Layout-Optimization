@@ -1,5 +1,5 @@
 class Machine:
-    """
+    """ Class represents machine
         machine_id - identifier of machine (integer value)
     """
     def __init__(self, machine_id):
