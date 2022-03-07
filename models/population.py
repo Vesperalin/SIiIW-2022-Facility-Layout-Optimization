@@ -1,12 +1,12 @@
 class Population:
     """ Represents population
         individuals - list of individuals in population ([Individual])
+        print_population() - prints population to console
     """
     def __init__(self, individuals):
         self.individuals = individuals
 
-    def __str__(self):
-        result = ""
+    def print_population(self):
         for individual in self.individuals:
-            result += individual.__str__() + '\n'
-        return result
+            print(individual.__str__())
+            print()

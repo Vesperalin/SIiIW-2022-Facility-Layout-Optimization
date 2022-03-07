@@ -1,9 +1,10 @@
 class Individual:
     """ Represents an individual in population
-        matrix - matrix of entities - genotype (2d list od Entity objects)
+        matrix - matrix of entities - genotype (numpy 2d list of entities)
+                 empty places have -1 value
         costs_of_flow - list of costs of flow
         amounts_of_flow - list of costs of flow
-        coordinates - dictionary of pairs: id of entity : (x coordinate, y coordinate)
+        coordinates - dictionary of pairs: entity : (x coordinate, y coordinate)
 
         __generate_entity_to_coordinates_collection() - method used to create coordinates dictionary
         get_entity_coordinates(id) - returns coordinates of entity is scheme (x position, y position)
@@ -23,20 +24,14 @@ class Individual:
         self.coordinates = self.__generate_entity_to_coordinates_collection()
 
     def __str__(self):
-        result = ""
-        for i in range(len(self.matrix)):
-            result += "[ "
-            for j in range(len(self.matrix[i])):
-                result += str(self.matrix[i][j]) + " "
-            result += "]" + "\n"
-        return result
+        return self.matrix
 
     def __generate_entity_to_coordinates_collection(self):
         coordinates = {}
-        for i in range(len(self.matrix[0])):
-            for j in range(len(self.matrix)):
-                if self.matrix[j][i] is not None:
-                    coordinates.update({self.matrix[j][i]: (i, j)})
+        for i in range(len(self.matrix)):
+            for j in range(len(self.matrix[0])):
+                if self.matrix[i][j] != -1:
+                    coordinates.update({self.matrix[i][j]: (i, j)})
         return coordinates
 
     def get_entity_coordinates(self, entity):
