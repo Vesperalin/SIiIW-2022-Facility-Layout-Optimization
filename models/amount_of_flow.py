@@ -1,7 +1,7 @@
 class AmountOfFlow:
     """ Class represents amount of flow between two entities
-        source - source entity id (int)
-        destination - destination entity id (int)
+        source - source entity (int)
+        destination - destination entity  (int)
         amount - amount of flow from source entity to destination entity (int)
     """
     def __init__(self, source, destination, amount):

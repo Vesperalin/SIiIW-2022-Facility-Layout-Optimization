@@ -1,7 +1,7 @@
 class CostOfFlow:
     """ Class represents cost of flow between two entities
-        source - source entity id (int)
-        destination - destination entity id (int)
+        source - source entity (int)
+        destination - destination entity (int)
         cost - cost of flow from source entity to destination entity (int)
     """
     def __init__(self, source, destination, cost):

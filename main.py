@@ -34,12 +34,12 @@ if __name__ == '__main__':
         print("Error while reading a files")
 
     easy_starting_population = \
-        random_method(10, easy_problem_instance, easy_entities, easy_costs_of_flow, easy_amounts_of_flow)
+        random_method(1000, easy_problem_instance, easy_entities, easy_costs_of_flow, easy_amounts_of_flow)
 
     flat_starting_population = \
-        random_method(10, flat_problem_instance, flat_entities, flat_costs_of_flow, flat_amounts_of_flow)
+        random_method(1000, flat_problem_instance, flat_entities, flat_costs_of_flow, flat_amounts_of_flow)
 
     hard_starting_population = \
-        random_method(10, hard_problem_instance, hard_entities, hard_costs_of_flow, hard_amounts_of_flow)
+        random_method(1000, hard_problem_instance, hard_entities, hard_costs_of_flow, hard_amounts_of_flow)
 
     show_statistics(easy_starting_population, flat_starting_population, hard_starting_population)

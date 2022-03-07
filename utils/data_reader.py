@@ -11,7 +11,7 @@ from models.entity import Entity
         returns
             - cost_of_flow_results - list of CostOfFlow objects - read from file
             - amount_of_flow - list of AmountOfFlow objects - read from file
-            - entities - list of Entity objects - based on all entity indexes from <problem instance name>_flow.json
+            - entities - list of entities id - based on all entity indexes from <problem instance name>_flow.json
 """
 
 
@@ -24,7 +24,6 @@ def read_data(problem_instance):
 
     cost_of_flows_results = []
     amount_of_flows_results = []
-    entities = []
     entities_indexes = set()  # to collect all entities id without repetitions
 
     for record in cost_of_flows_data:
@@ -39,7 +38,4 @@ def read_data(problem_instance):
         entities_indexes.add(record['source'])
         entities_indexes.add(record['dest'])
 
-    for entity_index in entities_indexes:
-        entities.append(Entity(entity_index))
-
-    return cost_of_flows_results, amount_of_flows_results, entities
+    return cost_of_flows_results, amount_of_flows_results, list(entities_indexes)

@@ -18,7 +18,6 @@ def random_method(population_size, problem_instance, entities, costs_of_flow, am
     for i in range(population_size):
         individual = Individual(assign_positions_to_entities_in_matrix(problem_instance, entities),
                                 costs_of_flow, amounts_of_flow)
-        print(individual.__str__())
         population.append(individual)
 
     return Population(population)
@@ -39,7 +38,7 @@ def assign_positions_to_entities_in_matrix(problem_instance, entities):
     random.shuffle(possible_indexes)  # shuffling collection of coordinates
 
     while m < len(entities):  # placing entities on random coordinates from shuffled collection
-        matrix_of_individual[possible_indexes[entities[m].entity_id][0]][possible_indexes[entities[m].entity_id][1]] = entities[m]
+        matrix_of_individual[possible_indexes[entities[m]][0]][possible_indexes[entities[m]][1]] = entities[m]
         m += 1
 
     return matrix_of_individual
