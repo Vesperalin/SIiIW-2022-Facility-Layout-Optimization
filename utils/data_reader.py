@@ -2,7 +2,6 @@ import json
 
 from models.cost_of_flow import CostOfFlow
 from models.amount_of_flow import AmountOfFlow
-from models.entity import Entity
 
 
 """
