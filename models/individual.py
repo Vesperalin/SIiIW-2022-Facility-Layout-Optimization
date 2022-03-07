@@ -28,7 +28,7 @@ class Individual:
             result += "[ "
             for j in range(len(self.matrix[i])):
                 result += str(self.matrix[i][j]) + " "
-            result += "]"
+            result += "]" + "\n"
         return result
 
     def __generate_entity_to_coordinates_collection(self):

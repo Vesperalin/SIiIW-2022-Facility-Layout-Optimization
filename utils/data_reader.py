@@ -23,7 +23,7 @@ def read_data(problem_instance):
 
     cost_of_flows_results = []
     amount_of_flows_results = []
-    entities_indexes = set()  # to collect all entities id without repetitions
+    entities_indexes = set()  # to collect all entities' id without repetitions
 
     for record in cost_of_flows_data:
         result = CostOfFlow(record['source'], record['dest'], record['cost'])
