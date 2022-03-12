@@ -5,6 +5,7 @@ class Individual:
         costs_of_flow - list of costs of flow
         amounts_of_flow - list of costs of flow
         coordinates - dictionary of pairs: entity : (x coordinate, y coordinate)
+        adaptation_value - initially None, will be set when running count_adaptation_value method
 
         __generate_entity_to_coordinates_collection() - method used to create coordinates dictionary
         get_entity_coordinates(id) - returns coordinates of entity is scheme (x position, y position)
@@ -22,6 +23,7 @@ class Individual:
         self.costs_of_flow = costs_of_flow
         self.amounts_of_flow = amounts_of_flow
         self.coordinates = self.__generate_entity_to_coordinates_collection()
+        self.adaptation_value = None
 
     def __str__(self):
         return self.matrix
@@ -72,4 +74,5 @@ class Individual:
             if amount > 0:
                 result += (self.amounts_of_flow[i].amount * self.costs_of_flow[i].cost * self.__get_distance(source_entity, destination_entity))
 
+        self.adaptation_value = result
         return result
