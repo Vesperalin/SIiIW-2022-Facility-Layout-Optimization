@@ -44,7 +44,7 @@ def tournament_selection(population, N):
                 pair[0] = the_best_individual_index
                 amount_of_chosen_parents += 1
                 break
-            elif pair[0] != the_best_individual_index and pair[1] == -1:
+            elif pair[1] == -1:
                 pair[1] = the_best_individual_index
                 amount_of_chosen_parents += 1
                 break
