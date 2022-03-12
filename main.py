@@ -10,20 +10,22 @@ from flo.roulette_selection import roulette_selection
 from flo.crossover import crossover
 from models.individual import Individual
 from models.population import Population
+from flo.mutation import mutation
 
 
 # TODO refactor code
 
-def generate_populations(amount_of_loop, initial_pop, tournament_size, probability, cost, flow):
+def generate_populations(amount_of_loop, initial_pop, tournament_size, prob_of_crossover, prob_of_mutation, cost, flow):
     current_pop = initial_pop
     best = []
     worst = []
     avg = []
 
     for o in range(0, amount_of_loop):
-        potential_parents = tournament_selection(current_pop, tournament_size)
-        # potential_parents = roulette_selection(current_pop)
-        temp_children = crossover(current_pop, potential_parents, probability)
+        # potential_parents = tournament_selection(current_pop, tournament_size)
+        potential_parents = roulette_selection(current_pop)
+        temp_children = crossover(current_pop, potential_parents, prob_of_crossover)
+        a = mutation(temp_children, prob_of_mutation)
 
         individuals = []
         for x in temp_children:
@@ -90,13 +92,13 @@ if __name__ == '__main__':
 
 
     """count_statistics(easy_starting_population)
-    generate_populations(10, easy_starting_population, 5, 0.70, easy_costs_of_flow, easy_amounts_of_flow)"""
+    generate_populations(10, easy_starting_population, 5, 0.70, 0.01, easy_costs_of_flow, easy_amounts_of_flow)"""
 
     """count_statistics(flat_starting_population)
-    generate_populations(10, flat_starting_population, 5, 0.70, flat_costs_of_flow, flat_amounts_of_flow)"""
+    generate_populations(10, flat_starting_population, 5, 0.70, 0.01, flat_costs_of_flow, flat_amounts_of_flow)"""
 
     count_statistics(hard_starting_population)
-    generate_populations(15, hard_starting_population, 5, 0.70, hard_costs_of_flow, hard_amounts_of_flow)
+    generate_populations(15, hard_starting_population, 5, 0.70, 0.01, hard_costs_of_flow, hard_amounts_of_flow)
 
 
 
