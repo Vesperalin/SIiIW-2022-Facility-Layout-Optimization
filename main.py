@@ -82,23 +82,29 @@ if __name__ == '__main__':
         print("Error while reading a files")
 
     easy_starting_population = \
-        random_method(500, easy_problem_instance, easy_entities, easy_costs_of_flow, easy_amounts_of_flow)
+        random_method(200, easy_problem_instance, easy_entities, easy_costs_of_flow, easy_amounts_of_flow)
 
     flat_starting_population = \
-        random_method(500, flat_problem_instance, flat_entities, flat_costs_of_flow, flat_amounts_of_flow)
+        random_method(200, flat_problem_instance, flat_entities, flat_costs_of_flow, flat_amounts_of_flow)
 
     hard_starting_population = \
-        random_method(500, hard_problem_instance, hard_entities, hard_costs_of_flow, hard_amounts_of_flow)
+        random_method(200, hard_problem_instance, hard_entities, hard_costs_of_flow, hard_amounts_of_flow)
 
 
-    """count_statistics(easy_starting_population)
-    generate_populations(10, easy_starting_population, 5, 0.70, 0.01, easy_costs_of_flow, easy_amounts_of_flow)"""
+    count_statistics(easy_starting_population)
+    generate_populations(50, easy_starting_population, 5, 0.70, 0.01, easy_costs_of_flow, easy_amounts_of_flow)
 
     """count_statistics(flat_starting_population)
-    generate_populations(10, flat_starting_population, 5, 0.70, 0.01, flat_costs_of_flow, flat_amounts_of_flow)"""
+    generate_populations(60, flat_starting_population, 4, 0.75, 0.01, flat_costs_of_flow, flat_amounts_of_flow)"""
 
-    count_statistics(hard_starting_population)
-    generate_populations(15, hard_starting_population, 5, 0.70, 0.01, hard_costs_of_flow, hard_amounts_of_flow)
+
+
+
+    """count_statistics(hard_starting_population)
+    generate_populations(100, hard_starting_population, 4, 0.75, 0.01, hard_costs_of_flow, hard_amounts_of_flow)"""
+
+
+
 
 
 
