@@ -25,7 +25,6 @@ def roulette_selection(population):
     inverse_probabilities = [(1 - x) for x in probabilities]
     inverse_probabilities = [x / sum(inverse_probabilities) for x in inverse_probabilities]
     result = np.random.choice(a=len(population.individuals), size=amount_of_parents, p=inverse_probabilities)
-    print(result)
 
     while n < amount_of_parents - 1:
         list_of_pairs_of_potential_parents.append([result[n], result[n + 1]])
