@@ -10,7 +10,7 @@ import random
 """
 
 
-def tournament_selection(population, N):
+def tournament_selection(population, n):
     list_of_pairs_of_potential_parents = []
     amount_of_chosen_parents = 0
     amount_of_parents = 0
@@ -26,7 +26,7 @@ def tournament_selection(population, N):
     while amount_of_chosen_parents < amount_of_parents:
         list_of_randomly_chosen_individuals_indexes = set()
 
-        while len(list_of_randomly_chosen_individuals_indexes) < N:
+        while len(list_of_randomly_chosen_individuals_indexes) < n:
             list_of_randomly_chosen_individuals_indexes.add(random.randrange(0, len(population.individuals)))
 
         list_of_randomly_chosen_individuals_indexes = list(list_of_randomly_chosen_individuals_indexes)

@@ -31,4 +31,3 @@ def roulette_selection(population):
         n += 2
 
     return list_of_pairs_of_potential_parents
-

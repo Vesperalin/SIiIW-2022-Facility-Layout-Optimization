@@ -1,7 +1,14 @@
 import random
 
 
-# TODO add comments
+"""
+    mutation(children, probability)
+        parameters:
+            children - list od 2D numpy arrays with ids of entities
+            probability - probability of mutation
+        changes two genes in individual's genotype (with given probability)
+        doesn't return anything - makes changes in array (bc. it's passed by reference)
+"""
 
 
 def mutation(children, probability):

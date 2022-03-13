@@ -2,18 +2,31 @@ import json.decoder
 import matplotlib.pyplot as plt
 
 from models.problem_instances import ProblemInstance
+from models.individual import Individual
+from models.population import Population
 from utils.data_reader import read_data
 from utils.random_method import random_method
 from utils.statistics import show_statistics, count_statistics
 from flo.tournament_selection import tournament_selection
 from flo.roulette_selection import roulette_selection
 from flo.crossover import crossover
-from models.individual import Individual
-from models.population import Population
 from flo.mutation import mutation
 
 
-# TODO refactor code
+"""
+    generate_populations(amount_of_loop, initial_pop, tournament_size, prob_of_crossover, prob_of_mutation, cost, flow)
+        parameters
+            amount_of_loop - amount of generations
+            initial_pop - initial population (Population object)
+            tournament_size - size ot tournament
+            prob_of_crossover - probability of crossover
+            prob_of_mutation - probability of mutation
+            cost - list of costs of flow between entities
+            flow - list of amount of flow between entities
+        method generates populations and counts adaptation values for it's individuals
+        after calculations shows results on graph
+"""
+
 
 def generate_populations(amount_of_loop, initial_pop, tournament_size, prob_of_crossover, prob_of_mutation, cost, flow):
     current_pop = initial_pop
@@ -22,10 +35,10 @@ def generate_populations(amount_of_loop, initial_pop, tournament_size, prob_of_c
     avg = []
 
     for o in range(0, amount_of_loop):
-        # potential_parents = tournament_selection(current_pop, tournament_size)
-        potential_parents = roulette_selection(current_pop)
+        potential_parents = tournament_selection(current_pop, tournament_size)
+        # potential_parents = roulette_selection(current_pop)
         temp_children = crossover(current_pop, potential_parents, prob_of_crossover)
-        a = mutation(temp_children, prob_of_mutation)
+        mutation(temp_children, prob_of_mutation)
 
         individuals = []
         for x in temp_children:
@@ -90,91 +103,11 @@ if __name__ == '__main__':
     hard_starting_population = \
         random_method(200, hard_problem_instance, hard_entities, hard_costs_of_flow, hard_amounts_of_flow)
 
-
-    count_statistics(easy_starting_population)
-    generate_populations(50, easy_starting_population, 5, 0.70, 0.01, easy_costs_of_flow, easy_amounts_of_flow)
+    """count_statistics(easy_starting_population)
+    generate_populations(50, easy_starting_population, 20, 0.80, 0.05, easy_costs_of_flow, easy_amounts_of_flow)"""
 
     """count_statistics(flat_starting_population)
-    generate_populations(60, flat_starting_population, 4, 0.75, 0.01, flat_costs_of_flow, flat_amounts_of_flow)"""
+    generate_populations(60, flat_starting_population, 20, 0.75, 0.05, flat_costs_of_flow, flat_amounts_of_flow)"""
 
-
-
-
-    """count_statistics(hard_starting_population)
-    generate_populations(100, hard_starting_population, 4, 0.75, 0.01, hard_costs_of_flow, hard_amounts_of_flow)"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # parents = tournament_selection(hard_starting_population, 20)
-    """for x in parents:
-        print("{} and {}".format(x[0], x[1]))"""
-    # probability = 0.70
-    # children = crossover(hard_starting_population, parents, probability)
-
-    # temp liczenie wskaznika - tworzenie populacji
-    """l = []
-    for x in children:
-        a = Individual(x, hard_costs_of_flow, hard_amounts_of_flow)
-        l.append(a)
-
-    p = Population(l)
-    count_statistics(p)"""
-
-    """print("*********************************************")
-
-    for i in range(0, 100):
-        par = tournament_selection(p, 50)
-        prob = 0.70
-        chil = crossover(p, par, prob)
-        f = []
-        for e in children:
-            h = Individual(e, hard_costs_of_flow, hard_amounts_of_flow)
-            f.append(h)
-        p = Population(f)
-        count_statistics(p)
-
-    show_statistics(p, p, p)
-
-    show_graph()"""
-
-    """for x in children:
-        print(x)"""
-
-    """a = 0
-    for x in easy_starting_population.individuals:
-        print(str(a) + ": " + str(x.adaptation_value))
-        a += 1
-
-    parents = roulette_selection(easy_starting_population)
-
-    print("*******************************")
-
-    for x in parents:
-        print("{} and {}".format(x[0], x[1]))"""
-
-
-
-
-    """flat_starting_population = \
-        random_method(1000, flat_problem_instance, flat_entities, flat_costs_of_flow, flat_amounts_of_flow)
-
-    hard_starting_population = \
-        random_method(1000, hard_problem_instance, hard_entities, hard_costs_of_flow, hard_amounts_of_flow)
-
-    show_statistics(easy_starting_population, flat_starting_population, hard_starting_population)"""
+    count_statistics(hard_starting_population)
+    generate_populations(100, hard_starting_population, 20, 0.75, 0.05, hard_costs_of_flow, hard_amounts_of_flow)
