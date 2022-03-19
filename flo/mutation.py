@@ -15,7 +15,7 @@ def mutation(children, probability):
     for child in children:
         random_num = random.randrange(0, 101)
 
-        if random_num <= probability * 100:
+        if random_num < probability * 100:
             height = len(children[0])
             width = len(children[0][0])
 
