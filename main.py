@@ -7,7 +7,7 @@ from models.individual import Individual
 from models.population import Population
 from utils.data_reader import read_data
 from utils.random_method import random_method
-from utils.statistics import show_statistics, count_statistics
+from utils.statistics import count_statistics
 from flo.tournament_selection import tournament_selection
 from flo.roulette_selection import roulette_selection
 from flo.crossover import crossover
@@ -29,12 +29,16 @@ from flo.mutation import mutation
         
     generate_statistics_for_genetic_algorithm(amount_of_generations, tournament_size, prob_of_crossover, 
             prob_of_mutation, cost, flow, problem_instance, entities,population_size)
-        method generates populations and counts adaptation values for it's individuals
+        method generates populations (genetic algorithm) and counts adaptation values for it's individuals
         then determines and returns values needed for comparing random method and genetic algorithm 
         returns: the best adaptation value found, the worst adaptation value found, 
             avg of the best adaptation values in each lap, standard deviation between the best and avg values
             
-    
+    generate_statistics_for_random_method(amount_of_loops, cost, flow, problem_instance, entities, population_size)
+        method generates random populations and counts adaptation values for it's individuals
+        then determines and returns values needed for comparing random method and genetic algorithm 
+        returns: the best adaptation value found, the worst adaptation value found, 
+            avg of the best adaptation values in each lap, standard deviation between the best and avg values
 """
 
 
@@ -71,11 +75,11 @@ def generate_populations(amount_of_loop, initial_pop, tournament_size, prob_of_c
 def generate_statistics_for_genetic_algorithm(amount_of_generations, tournament_size, prob_of_crossover,
                                               prob_of_mutation, cost, flow, problem_instance, entities,
                                               population_size):
-    best_of_all_tours = -1  # najlepszy z 10 uruchmień
-    worst_of_all_tours = 0  # najgorszy z 10 uruchomień
-    bests_of_all_tours = []  # najlepsi z każdego uruchomienia - policzyć z tego średnią
-    avg_of_all_best = 0  # będzie liczone z best_of_all_tours
-    standard_deviation = 0  # odchylenie standardowe ze średniej i najlepszych
+    best_of_all_tours = -1
+    worst_of_all_tours = 0
+    bests_of_all_tours = []
+    avg_of_all_best = 0
+    standard_deviation = 0
 
     for i in range(0, 10):
         starting_population = random_method(population_size, problem_instance, entities, cost, flow)
@@ -128,11 +132,11 @@ def generate_statistics_for_genetic_algorithm(amount_of_generations, tournament_
 
 
 def generate_statistics_for_random_method(amount_of_loops, cost, flow, problem_instance, entities, population_size):
-    best_of_all_tours = -1  # najlepszy z 10 uruchmień
-    worst_of_all_tours = 0  # najgorszy z 10 uruchomień
-    bests_of_all_tours = []  # najlepsi z każdego uruchomienia - policzyć z tego średnią
-    avg_of_all_best = 0  # będzie liczone z best_of_all_tours
-    standard_deviation = 0  # odchylenie standardowe ze średniej i najlepszych
+    best_of_all_tours = -1
+    worst_of_all_tours = 0
+    bests_of_all_tours = []
+    avg_of_all_best = 0
+    standard_deviation = 0
 
     for a in range(0, 10):
         for i in range(0, amount_of_loops):
@@ -209,8 +213,8 @@ if __name__ == '__main__':
     except json.decoder.JSONDecodeError:
         print("Error while reading a files")
 
-    """easy_starting_population = \
-        random_method(200, easy_problem_instance, easy_entities, easy_costs_of_flow, easy_amounts_of_flow)"""
+    easy_starting_population = \
+        random_method(200, easy_problem_instance, easy_entities, easy_costs_of_flow, easy_amounts_of_flow)
 
     """flat_starting_population = \
         random_method(50, flat_problem_instance, flat_entities, flat_costs_of_flow, flat_amounts_of_flow)"""
@@ -224,5 +228,5 @@ if __name__ == '__main__':
     """count_statistics(flat_starting_population)
     generate_populations(60, flat_starting_population, 20, 0.75, 0.05, flat_costs_of_flow, flat_amounts_of_flow)"""
 
-    """count_statistics(hard_starting_population)"""
-    """generate_populations(200, hard_starting_population, 20, 0.85, 0.95, hard_costs_of_flow, hard_amounts_of_flow)"""
+    """count_statistics(hard_starting_population)
+    generate_populations(200, hard_starting_population, 20, 0.85, 0.95, hard_costs_of_flow, hard_amounts_of_flow)"""
